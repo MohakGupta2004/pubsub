@@ -60,6 +60,11 @@ app.post("/publish", async(req, res) => {
 
 app.post("/schedule", async (req, res) => {
   const { number } = req.body;
+  if(!number) {
+    return res.status(400).json({
+      message: "number is required",
+    });
+  }
   const project = "realtygenie";
   const location = "us-west1";
   const queue = "test-queue";
