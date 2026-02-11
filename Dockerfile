@@ -31,5 +31,5 @@ COPY --from=prerelease /usr/src/app/index.ts .
 COPY --from=prerelease /usr/src/app/package.json .
 
 # run the app
-
+EXPOSE 8080 
 ENTRYPOINT [ "bun", "run", "index.ts" ]
