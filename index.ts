@@ -66,7 +66,7 @@ app.post("/schedule", async (req, res) => {
     });
   }
   const project = "realtygenie";
-  const location = "us-west1";
+  const location = "europe-west1";
   const queue = "test-queue";
   const parent = client.queuePath(project, location, queue);
   const payload = JSON.stringify({
@@ -75,8 +75,10 @@ app.post("/schedule", async (req, res) => {
   const task : protos.google.cloud.tasks.v2.ITask = {
     httpRequest: {
       httpMethod: "POST",
-
       url: "https://pubsub-130961755900.europe-west1.run.app/publish",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: Buffer.from(payload).toString("base64"),
     },
     scheduleTime: {
