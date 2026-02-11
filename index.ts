@@ -40,9 +40,9 @@ async function publishMessage(topicNameOrId: string, data: string) {
 const app = express();
 app.use(express.json());
 
-app.post("/publish", (req, res) => {
+app.post("/publish", async(req, res) => {
   const { number } = req.body;
-  publishMessage(
+  await publishMessage(
     "test",
     JSON.stringify({
       metadata: {},
@@ -84,6 +84,11 @@ app.post("/schedule", async (req, res) => {
     response,
   });
 });
+
+app.get("/", (req, res) => {
+  res.send("ok");
+});
+
 const port = Number(process.env.PORT) || 8080; 
 
 app.listen(port,  () => {
