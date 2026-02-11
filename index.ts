@@ -70,7 +70,7 @@ app.post("/schedule", async (req, res) => {
   const task : protos.google.cloud.tasks.v2.ITask = {
     httpRequest: {
       httpMethod: "POST",
-      url: "http://localhost:3000/publish",
+      url: "https://pubsub-gcp-130961755900.europe-west1.run.app/publish",
       body: Buffer.from(payload).toString("base64"),
     },
     scheduleTime: {
