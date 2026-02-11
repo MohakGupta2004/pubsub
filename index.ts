@@ -65,7 +65,7 @@ app.post("/schedule", async (req, res) => {
   const queue = "test-queue";
   const parent = client.queuePath(project, location, queue);
   const payload = JSON.stringify({
-    numer: number,
+    number: number,
   });
   const task : protos.google.cloud.tasks.v2.ITask = {
     httpRequest: {
